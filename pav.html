@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pavan to English Converter</title>
+  <style>
+    :root {
+      --bg-color: #000000;
+      --text-color: #f5f5f7;
+      --card-bg: #1c1c1e;
+      --highlight-color: #0a84ff;
+      --border-color: #3a3a3c;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #aaa;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      font-size: 1rem;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      resize: vertical;
+    }
+
+    button {
+      background-color: var(--highlight-color);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0066cc;
+    }
+
+    #output {
+      margin-top: 2rem;
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      font-size: 1.1rem;
+      white-space: pre-wrap;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pavan to English Converter</h1>
+  <p>by tejas and ishaan</p>
+  <h2>Enter text in Illegible Pavan:</h2>
+  <textarea id="inputText" placeholder="Supported vocabulary: ompu, dei, da, cap and ?"></textarea>
+  <br />
+  <button onclick="convertText()">Translate</button>
+
+  <h2>English Translation:</h2>
+  <div id="output"></div>
+
+  <script>
+    const pavanToEnglish = {
+      "dei": "i want 102 big maharaja macs with a side of fries",
+      "da": "(used to initialize a sentence)",
+      "cap": "that is true",
+      "ompu": "give mcdonalds",
+      "?": "i do not know english",
+      // Add more mappings as needed
+    };
+
+    function convertText() {
+      const input = document.getElementById("inputText").value.trim().toLowerCase();
+      const words = input.split(/\s+/);
+
+      const translatedWords = words.map(word => {
+        return pavanToEnglish[word] || `[${word}]`;
+      });
+
+      document.getElementById("output").textContent = translatedWords.join(" ");
+    }
+  </script>
+
+</body>
+</html>
